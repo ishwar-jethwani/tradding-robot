@@ -41,12 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'main',
+    "bootstrap4",
 
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook'
 ]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -154,11 +152,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Allauth
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "username" or "email"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = "/dashboard/"
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 # email backend
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

@@ -1,0 +1,60 @@
+{% extends 'account/base.html' %}
+{% block content %}
+{% load static %}
+{% load bootstrap4 %}
+<style>
+	.form-check {
+		position: relative;
+		display: block;
+		margin-bottom: .5rem;
+		margin-left: 7%;
+	}
+	.p-b-17 {
+		margin-top: -30%;
+	}
+
+
+</style>
+<section style="margin-top: 70px;">
+	<div class="main">
+		<div class="limiter">
+			<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+				<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+					<form  method="POST" action="{% url 'account_login' %}" class=" login login100-form validate-form">
+						<span class="login100-form-title p-b-49">
+							Login
+						</span>
+						{% csrf_token %}
+						{% bootstrap_form form %}
+						<div class="text-right p-t-8 p-b-31">
+							<a href="{% url 'account_reset_password' %}">
+								Forgot password?
+							</a>
+						</div>
+						
+						<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button type="submit" class="login100-form-btn">
+									Login
+								</button>
+							</div>
+						</div>
+
+						<div class="flex-col-c p-t-155">
+							<span class="txt1 p-b-17">
+								Or Sign Up Using
+							</span>
+
+							<a type="btn" href="{% url 'account_signup' %}" class="txt2">
+								Sign Up
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="dropDownSelect1"></div>
+	</div>
+</section>
+{% endblock content %}	

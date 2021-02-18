@@ -1,0 +1,28 @@
+{% extends 'account/base.html' %}
+{% block content %}
+<section style="margin-top: 70px;">
+	<div class="main">
+		<div class="limiter">
+			<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+				<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+					<form  method="POST" action="{% url 'account_logout' %}" class=" login login100-form validate-form">
+						<span class="login100-form-title p-b-49">
+							Logout
+						</span>
+						{% csrf_token %}
+						<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button type="submit" class="login100-form-btn">
+									Logout
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="dropDownSelect1"></div>
+	</div>
+</section>
+{% endblock content %}

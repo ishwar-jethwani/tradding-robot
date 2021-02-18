@@ -1,0 +1,55 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+
+
+<section style="margin-top: 70px;">
+    <div class="main">
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
+
+                    {% if confirmation %}
+
+                    {% user_display confirmation.email_address.user as user_display %}
+
+                    <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a
+                            href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user
+                        {{ user_display }}.{% endblocktrans %}</p>
+
+                    <form method="post" class="login login100-form validate-form"
+                        action="{% url 'account_confirm_email' confirmation.key %}">
+                        {% csrf_token %}
+                        <div style="margin-top:10%"class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button type="submit" class="login100-form-btn">
+                                    {% trans 'Confirm' %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    {% else %}
+
+                    {% url 'account_email' as email_url %}
+                    <div class="card-footer-form">
+                        <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a
+                                href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}
+                        </p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        {% endblock %}
