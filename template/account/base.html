@@ -2,9 +2,13 @@
 <html lang="en">
     <head>
         {% include 'account/head.html' %}
+        {% block head %}{% endblock head %}
     </head>
     <body>
         {% include 'account/header.html' %}
-        {% block content %}{% endblock content %}
+        {% block content %}
+        {% block scripts %}{% endblock scripts %}
+        {% endblock content %}
         {% include 'account/scripts.html' %}
+        
     </body>
