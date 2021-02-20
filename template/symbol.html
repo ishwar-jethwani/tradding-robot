@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa fa-flag" aria-hidden="true"></i>
+                Symbols
+            </div>
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="."
+                method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Group" name="sym_group"
+                        aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-info" type="submit">Get Data</i></button>
+                    </div>
+                </div>
+            </form>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        {% for s in list %}
+                        <tr style="background-color:{{ color }};">
+                            <td>{{s}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock content %}
