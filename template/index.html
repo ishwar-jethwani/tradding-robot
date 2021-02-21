@@ -72,7 +72,7 @@
                 
             </div>
             <div class="row">
-                <div  onclick="document.location = '#'"class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
+                <div  onclick=loginwithapi() class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Login With API</div>
                     </div>
@@ -99,6 +99,9 @@
         function logout(){
             document.location="{% url 'account_logout' %}"
 
+        }
+        function loginwithapi(){
+            document.location="{% url 'api' %}"
         }
     </script>
     {% endblock content %}
