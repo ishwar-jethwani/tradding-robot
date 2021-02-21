@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 import random
 from MetaTrader5 import *
-initialize(    
-        path="https://s3.console.aws.amazon.com/s3/object/traddingrobotdata?region=ap-south-1&prefix=exe/sharon5setup_2.exe",           
+initialize(               
         login=33003,              
         password="pdge2iej",     
         server="Sharon-Live",                   
@@ -12,44 +11,43 @@ initialize(
 symbols_total=symbols_total()
 
 def home(request):
+    return render(request,"index.html",{"symbols":symbols_total})
+
+def symbol_setting(request):
+    return render(request,"symbol_setting.html",{"symbols":symbols_total})
+
+def order_history(request):
+    return render(request,"order_history.html")
+
+def trade_history(request):
+    return render(request,"trade_history.html")
+
+def brder_book(request):
+    return render(request,"brder_book.html")
+
+def trade_book(request):
+    return render(request,"trade_book.html")
+
+
+def signal(request):
     option = ["sell","buy"]
     signal = random.choice(option)
-    color=""
+    color = "" 
     if signal == "buy":
         color = "#F3CDCD"
-        return render(request,'index.html',{"color":color,"symbols":symbols_total})
+        data = {
+        "color":color
+        }
+        return render(request,"signal.html",data)
     else:
         color = "#C7F2C8"
-        return render(request,'index.html',{"color":color,"symbols":symbols_total})
+        data = {
+        "color":color
+        }
+        return render(request,"signal.html",data)
 
     
-def get_symbols(request):
-    option = ["sell","buy"]
-    signal = random.choice(option)
-    color = ""
-    if request.method=="POST":
-        list=symbols_get(
-            group=request.POST.get("sym_group")    
-        )
-        
-        
-        if signal == "buy":
-            color = "#F3CDCD"
-            data = {
-            "list":list,
-            "color":color
-            }
-            return render(request,"symbol.html",data)
-        else:
-            color = "#C7F2C8"
-            data = {
-            "list":list,
-            "color":color
-            }
-            return render(request,"symbol.html",data)
-    return render(request,"symbol.html")
-    
 
 
 
-# Create your views here.
+
