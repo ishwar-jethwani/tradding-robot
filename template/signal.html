@@ -9,17 +9,17 @@
                 <li class="breadcrumb-item active">Signal</li>
             </ol>
             <div class="row">
-                <div class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
+                <div onclick=api() class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
                     <div class="card bg-secondary text-white mb-4">
                         <div class="card-body">API</div>
                     </div>
                 </div> 
-                <div class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
+                <div onclick=source() class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Signal Source</div>
                     </div>
                 </div> 
-                <div class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
+                <div onclick=live() class="col-xl-3 col-md-6" type="button" class="btn btn-outline-primary">
                     <div class="card bg-success text-white mb-4">
                         <div class="card-body">Live Siganl</div>
                     </div>
@@ -42,4 +42,15 @@
             </div>
         </div>
     </main>
+    <script>
+        function api(){
+            document.location = "{% url 'api' %}"
+        }
+        function live(){
+            document.location = "{% url 'live' %}"
+        }
+        function source(){
+            document.location = "{% url 'source' %}"
+        }
+    </script>
     {% endblock content %}
